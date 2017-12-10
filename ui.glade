@@ -58,6 +58,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="onStartReadCard" swapped="no"/>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -110,6 +111,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="onStartBypass" swapped="no"/>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -232,6 +234,7 @@
                         <property name="receives_default">True</property>
                         <property name="image">image-auth</property>
                         <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="getVoterInfo" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -414,6 +417,7 @@
                 <property name="can_focus">True</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="Login" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -427,6 +431,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="LoginDiscard" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
