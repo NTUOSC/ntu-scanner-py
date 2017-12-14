@@ -1,0 +1,13 @@
+entry {
+    font-size: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.monospace {
+    font-family: 'Roboto Mono', Consolas;
+}
+
+.stuid {
+    letter-spacing: 3px;
+}
