@@ -199,7 +199,7 @@
                             <property name="can_focus">True</property>
                             <property name="width_chars">9</property>
                             <property name="caps_lock_warning">False</property>
-                            <property name="primary_icon_stock">gtk-edit</property>
+                            <property name="primary_icon_stock">gtk-dialog-authentication</property>
                             <style>
                               <class name="stuid"/>
                             </style>
@@ -266,13 +266,16 @@
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="voter_info">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
                     <property name="label" translatable="yes">學號 B03123456
 選區：社會科學院 (A)</property>
+                    <property name="wrap">True</property>
                     <attributes>
                       <attribute name="font-desc" value="&lt;輸入數值&gt; 18"/>
                     </attributes>
@@ -299,6 +302,10 @@
                         <property name="receives_default">True</property>
                         <property name="image">image-ballot-confirm</property>
                         <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="onCommit" swapped="no"/>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -314,6 +321,7 @@
                         <property name="receives_default">True</property>
                         <property name="image">image-ballot-discard</property>
                         <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="onForgive" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -344,6 +352,7 @@
         </child>
         <child>
           <object class="GtkStatusbar" id="general_status">
+            <property name="name">general_status</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_left">10</property>
@@ -352,7 +361,24 @@
             <property name="margin_end">10</property>
             <property name="margin_top">6</property>
             <property name="margin_bottom">6</property>
-            <property name="spacing">6</property>
+            <property name="spacing">4</property>
+            <child>
+              <object class="GtkLabel" id="last_sync_ts">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">baseline</property>
+                <property name="label" translatable="yes">&lt;timestamp&gt;</property>
+                <attributes>
+                  <attribute name="font-desc" value="&lt;輸入數值&gt; 10"/>
+                  <attribute name="foreground" value="#555557575353"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
             <child>
               <object class="GtkLabel" id="client_name">
                 <property name="visible">True</property>
@@ -366,7 +392,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -380,13 +406,13 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">True</property>
+            <property name="fill">False</property>
             <property name="position">1</property>
           </packing>
         </child>

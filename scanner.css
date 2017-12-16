@@ -11,3 +11,21 @@ entry {
 .stuid {
     letter-spacing: 3px;
 }
+
+.stuid > * {
+    letter-spacing: 0;
+}
+
+button.active {
+    background-image: linear-gradient(to bottom, #1e88e5 0%, #0d47a1 100%);
+    color: white;
+    text-shadow: 0 2px black;
+}
+
+#general_status {
+    font-size: 10px;
+}
+
+#general_status {
+    font-size: medium;
+}
