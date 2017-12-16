@@ -41,6 +41,12 @@ Given the college (學院代碼), return the string (i.e. 選票別) that is att
 after the string...
 '''
 def getModifier(college):
+    groupA = ['法學院', '文學院', '社會科學院', '生物資源暨農學院', '生命科學院']
+    groupB = ['理學院', '醫學院', '工學院', '管理學院', '電機資訊學院']
+    if college in groupA:
+        return '(A)'
+    if college in groupB:
+        return '(B)'
     return ''
 
 '''
