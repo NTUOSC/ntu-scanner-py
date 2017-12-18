@@ -191,7 +191,7 @@ class Application(Gtk.Application):
     def cbLoadClientInfo(self, _, err, resp):
         try:
             if err:
-                raise err
+                print(err)
 
             data = resp.json()
             if data['ok']:
@@ -344,7 +344,7 @@ class Application(Gtk.Application):
             msgbox.run()
             msgbox.close()
 
-        def loginCallback(sess, resp):
+        def loginCallback(sess, err, resp):
             GLib.idle_add(dialog.set_sensitive, True)
 
             try:
