@@ -79,6 +79,9 @@ def startHealthCheck(app):
     fstr = '%H:%M:%S'
     label = app.get('last_sync_ts')
 
+    def setLoadStr():
+        label.set_text('...' + label.get_text())
+
     def pingPeriodic():
         while True:
             if app._entryCode: break
@@ -88,7 +91,7 @@ def startHealthCheck(app):
 
         while True:
             areq = queryPing(app._entryCode, None, timeout=3)
-            label.set_text('...' + label.get_text())
+            GLib.idle_add(setLoadStr)
 
             try:
                 resp = areq.result()
@@ -390,10 +393,7 @@ class Application(Gtk.Application):
             self.get('status').set_text('讀卡失敗 QAQ')
             raise
 
-        try:
-            reader.beep(200)
-        except:
-            pass
+        reader.beep(15)
 
         text = data.value.decode('utf-8')
         cardId, cardSerial = text[:9], text[9:11].strip()
