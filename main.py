@@ -99,14 +99,16 @@ def startHealthCheck(app):
                     result = '成功'
                 else:
                     result = '失敗: {}'.format(data['msg'])
-                label.set_text(timestr + ' ' + result)
+                GLib.idle_add(label.set_text, timestr + ' ' + result)
             except ConnectTimeout:
-                label.set_text(timestr + ' 逾時')
+                timestr = time.strftime(fstr)
+                GLib.idle_add(label.set_text, timestr + ' 逾時')
             except:
-                label.set_text(timestr + ' 錯誤')
+                timestr = time.strftime(fstr)
+                GLib.idle_add(label.set_text, timestr + ' 錯誤')
 
             # XXX: should add some randomness
-            time.sleep(18)
+            time.sleep(14)
 
     thr = threading.Thread(target=pingPeriodic)
     thr.daemon = True
@@ -388,10 +390,15 @@ class Application(Gtk.Application):
             self.get('status').set_text('讀卡失敗 QAQ')
             raise
 
+        try:
+            reader.beep(200)
+        except:
+            pass
+
         text = data.value.decode('utf-8')
         cardId, cardSerial = text[:9], text[9:11].strip()
 
-        self._card_sec = reader.last_snr + '|' + data.value.decode('hex')
+        self._card_sec = str(reader.last_snr) + '|' + repr(data.raw)
         self.get('entry_cardid').set_text(cardId)
         self._card_serial = cardSerial
 

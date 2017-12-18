@@ -65,11 +65,11 @@ class CardReader:
         if ret != 0:
             raise CardReaderException('dc_beep', ret)
 
-    def scanCard(self, returnStr=False):
+    def readCard(self, returnStr=False):
         icdev = self._icdev
         lib = CardReader.library
 
-        if _icdev is None:
+        if icdev is None:
             raise RuntimeError('Device is not initialized yet!')
 
         ret = lib.dc_reset(icdev, 0)
