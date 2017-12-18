@@ -60,6 +60,11 @@ class CardReader:
         if ret != 0:
             raise CardReaderException('dc_load_key', ret)
 
+    def beep(self, dur=100):
+        ret = CardReader.dc_beep(self._icdev, dur)
+        if ret != 0:
+            raise CardReaderException('dc_beep', ret)
+
     def scanCard(self, returnStr=False):
         icdev = self._icdev
         lib = CardReader.library

@@ -136,7 +136,6 @@ class Application(Gtk.Application):
         self._tx = None
 
     def do_startup(self, *args):
-        # XXX: why `super().do_startup(self)` does not work?
         Gtk.Application.do_startup(self)
 
         builder = Gtk.Builder()
