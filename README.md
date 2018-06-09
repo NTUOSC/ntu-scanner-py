@@ -17,7 +17,7 @@ Scanner used in NTUSC election 106-1, written using PyGObject.
 ## Installation kit
 
 1. Python 安裝包 (3.4 以下，32-bit)
-2. PyGObject on Windows (Latest: GIO 3.24.1, GTK+ 3.18) \
+2. [PyGObject on Windows](https://sourceforge.net/projects/pygobjectwin32/) (Latest: GIO 3.24.1, **GTK+ 3.18**) \
    安裝的時候要記得勾選 GTK+ 這個 dependency
 3. pip dependencies (for offline)
 4. 讀卡機函式庫：dcrf32.dll
